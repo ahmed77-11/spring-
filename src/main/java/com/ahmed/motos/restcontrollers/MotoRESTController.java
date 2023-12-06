@@ -25,7 +25,6 @@ public class MotoRESTController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<Moto> getAllMotos(){
-        System.out.println("ffffffff");
         return motoService.getAllMotos();
     }
     @RequestMapping(value="/{id}",method=RequestMethod.GET)
@@ -33,8 +32,7 @@ public class MotoRESTController {
         return motoService.getMoto(id);
     }
     @RequestMapping(method = RequestMethod.POST)
-    public Moto createMoto(@RequestBody Moto moto) {
-        System.out.println("ffffffff");
+    public Moto createMoto(@RequestBody(required = false) Moto moto) {
          return motoService.saveMoto(moto);
 
     }
@@ -43,5 +41,16 @@ public class MotoRESTController {
     	return motoService.updateMoto(moto);
     }
 
-
+    @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
+    public void deleteMoto(@PathVariable("id") long id){
+        motoService.deleteMotoById(id);
+    }
+    @RequestMapping(value="/motosmod/{idModel}",method = RequestMethod.GET)
+    public List<Moto> getMotosByModelId(@PathVariable("idModel") Long idModel){
+        return motoService.findByModelIdModel(idModel);
+    }
+    @RequestMapping(value ="/motosByMarque/{marque}",method = RequestMethod.GET)
+    public List<Moto> findByMarqueMotoContains(@PathVariable("marque") String marque){
+        return motoService.findByMarqueMotoContains(marque);
+    }
 }

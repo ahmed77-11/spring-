@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import com.ahmed.motos.entities.Model;
 import com.ahmed.motos.entities.Moto;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+@RepositoryRestResource(path = "rest")
 public interface MotoRepository extends JpaRepository<Moto, Long> {
 	
 	List<Moto> findByMarqueMoto(String marque);

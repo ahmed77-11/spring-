@@ -2,6 +2,8 @@ package com.ahmed.motos.entities;
 
 import  java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,7 +21,6 @@ public class Moto {
 	private Date dateCreation;
 	
 	@ManyToOne
-	@JsonManagedReference
 	private Model model;
 	
 	
@@ -72,5 +73,5 @@ public class Moto {
 	public void setModel(Model model) {
 		this.model = model;
 	}
-		
+
 }
